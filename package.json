@@ -14,6 +14,7 @@
     "@ant-design/icons": "^5.0.1",
     "@ant-design/pro-components": "^2.4.4",
     "@umijs/max": "^4.3.35",
+    "@umijs/plugin-prerender": "^1.8.4",
     "antd": "^5.4.0",
     "lodash": "^4.17.21"
   },

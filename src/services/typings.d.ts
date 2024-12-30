@@ -9,8 +9,9 @@ declare namespace Global {
   }
 
   interface ResponseData<T = string> {
-    result?: boolean;
-    code?: string;
+    result: boolean;
+    code: string;
+    message: string;
     data?: T;
   }
 }

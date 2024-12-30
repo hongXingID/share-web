@@ -1,13 +1,15 @@
 import { defineConfig } from '@umijs/max';
+import { ShareRoutes } from './share';
 
 const routes: Parameters<typeof defineConfig>[0]['routes'] = [
   {
     path: '/',
-    redirect: '/home',
+    redirect: '/share',
   },
   {
     name: '首页',
     path: '/home',
+    layout: false,
     component: '@/pages/home',
   },
   {
@@ -63,6 +65,24 @@ const routes: Parameters<typeof defineConfig>[0]['routes'] = [
     name: '登录',
     layout: false,
   },
+  {
+    name: 'wechat',
+    path: '/wechat',
+    layout: false,
+    routes: [
+      {
+        name: '微信登录',
+        path: '/wechat/login',
+        component: '@/pages/wechat/login',
+      },
+      {
+        name: '功能调试',
+        path: '/wechat/debugger',
+        component: '@/pages/wechaty/debugger',
+      },
+    ],
+  },
+  ...(ShareRoutes as []),
 ];
 
 export default routes;

@@ -1,11 +1,28 @@
+import TableFormModal, {
+  useTableFormModal,
+} from '@/components/table_form_modal';
 import services from '@/services/system/subscription_tag';
-import { PageContainer, ProTable } from '@ant-design/pro-components';
+import {
+  ActionType,
+  PageContainer,
+  ProTable,
+} from '@ant-design/pro-components';
 import { Button } from 'antd';
-import React from 'react';
+import React, { useRef } from 'react';
+import { useSubscriptionTagActions } from './use_subscription_tag_actions';
+import { useSubscriptionTagColumns } from './use_subscription_tag_columns';
 
 const { querySubscriptionTagList } = services.SubscriptionTagController;
 
 const SubscriptionTag: React.FC = () => {
+  const actionRef = useRef<ActionType>();
+
+  const { tableFormModalState, onTableFormModalOpen, onTableFormModalCancel } =
+    useTableFormModal();
+
+  const { handleAdd } = useSubscriptionTagActions();
+  const { columns } = useSubscriptionTagColumns();
+
   return (
     <PageContainer
       header={{
@@ -15,15 +32,12 @@ const SubscriptionTag: React.FC = () => {
       <ProTable<SubscriptionTagBySystem.SubscriptionTag>
         headerTitle="wechaty列表"
         rowKey="id"
+        actionRef={actionRef}
         search={{
           labelWidth: 120,
         }}
         toolBarRender={() => [
-          <Button
-            key="1"
-            type="primary"
-            onClick={() => handleModalVisible(true)}
-          >
+          <Button key="1" type="primary" onClick={() => onTableFormModalOpen()}>
             新建
           </Button>,
         ]}
@@ -40,7 +54,7 @@ const SubscriptionTag: React.FC = () => {
             success: result,
           };
         }}
-        columns={[]}
+        columns={columns}
         rowSelection={{
           onChange: (_, selectedRows) => setSelectedRows(selectedRows),
         }}
@@ -67,6 +81,21 @@ const SubscriptionTag: React.FC = () => {
           <Button type="primary">批量审批</Button>
         </FooterToolbar>
       )} */}
+
+      <TableFormModal<SubscriptionTagBySystem.SubscriptionTag>
+        columns={columns}
+        modalVisible={tableFormModalState.visible}
+        onCancel={onTableFormModalCancel}
+        onSubmit={async (value) => {
+          const success = await handleAdd(value);
+          if (success) {
+            onTableFormModalCancel();
+            if (actionRef.current) {
+              actionRef.current.reload();
+            }
+          }
+        }}
+      />
     </PageContainer>
   );
 };
