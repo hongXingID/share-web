@@ -6,11 +6,13 @@ import {
   QuestionCircleFilled,
   SearchOutlined,
 } from '@ant-design/icons';
-import { DefaultFooter, ProLayout } from '@ant-design/pro-components';
-import { history, Outlet } from '@umijs/max';
+import { ProLayout } from '@ant-design/pro-components';
+import { history, Outlet, useLocation } from '@umijs/max';
 
-import { Input, theme } from 'antd';
+import { Input, message, theme } from 'antd';
 
+import { domainRecord } from '@/constants';
+import { Empty } from 'antd';
 import defaultProps from './_defaultProps';
 
 const Item: React.FC<{ children: React.ReactNode }> = (props) => {
@@ -27,44 +29,10 @@ const Item: React.FC<{ children: React.ReactNode }> = (props) => {
   );
 };
 
-const List: React.FC<{ title: string; style?: React.CSSProperties }> = (
-  props,
-) => {
-  const { token } = theme.useToken();
-
-  return (
-    <div
-      style={{
-        width: '100%',
-        ...props.style,
-      }}
-    >
-      <div
-        style={{
-          fontSize: 16,
-          color: token.colorTextHeading,
-          lineHeight: '24px',
-          fontWeight: 500,
-          marginBlockEnd: 16,
-        }}
-      >
-        {props.title}
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-        }}
-      >
-        {new Array(6).fill(1).map((_, index) => {
-          return <Item key={index}>具体的解决方案-{index}</Item>;
-        })}
-      </div>
-    </div>
-  );
-};
-
 export default () => {
+  const location = useLocation();
+
+  const isEmptyShow = ['/share'].includes(location.pathname);
   return (
     <div
       id="test-pro-layout"
@@ -127,13 +95,16 @@ export default () => {
           ];
         }}
         menuItemRender={(item, dom) => (
-          <div
+          <a
             onClick={() => {
+              if (item.disabled) {
+                return message.warning('功能暂未开放，敬请期待');
+              }
               history.push(item.path || '/home');
             }}
           >
             {dom}
-          </div>
+          </a>
         )}
         headerTitleRender={(logo, title, _) => {
           const defaultDom = (
@@ -155,20 +126,21 @@ export default () => {
           if (_.isMobile) return defaultDom;
           return <>{defaultDom}</>;
         }}
+        layout="mix"
         fixedHeader
-        layout="top"
+        fixSiderbar
         contentStyle={{ margin: 0, padding: 0 }}
         footerRender={() => (
-          <DefaultFooter
-            links={[
-              { key: 'test', title: 'layout', href: 'www.alipay.com' },
-              { key: 'test2', title: 'layout2', href: 'www.alipay.com' },
-            ]}
-            copyright="这是一条测试文案"
-          />
+          <a
+            style={{ textAlign: 'center', padding: '10px', color: 'inherit' }}
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+          >
+            {domainRecord}
+          </a>
         )}
       >
-        <Outlet />
+        {isEmptyShow ? <Empty /> : <Outlet />}
       </ProLayout>
     </div>
   );

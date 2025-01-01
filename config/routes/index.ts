@@ -4,7 +4,7 @@ import { ShareRoutes } from './share';
 const routes: Parameters<typeof defineConfig>[0]['routes'] = [
   {
     path: '/',
-    redirect: '/share',
+    redirect: '/share/home',
   },
   {
     name: '首页',

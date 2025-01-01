@@ -6,7 +6,6 @@ export const ShareRoutes: Parameters<typeof defineConfig>[0]['routes'] = [
     path: '/share',
     layout: false,
     component: '@/pages/share',
-    // redirect: '/share/home',
     routes: [
       {
         name: '主页',
