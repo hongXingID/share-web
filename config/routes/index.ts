@@ -1,4 +1,5 @@
 import { defineConfig } from '@umijs/max';
+import { CMSRoutes } from './cms';
 import { ShareRoutes } from './share';
 
 const routes: Parameters<typeof defineConfig>[0]['routes'] = [
@@ -11,11 +12,6 @@ const routes: Parameters<typeof defineConfig>[0]['routes'] = [
     path: '/home',
     layout: false,
     component: '@/pages/home',
-  },
-  {
-    name: '权限演示',
-    path: '/access',
-    component: '@/pages/access',
   },
   {
     name: 'wechaty',
@@ -83,6 +79,7 @@ const routes: Parameters<typeof defineConfig>[0]['routes'] = [
     ],
   },
   ...(ShareRoutes as []),
+  ...(CMSRoutes as []),
 ];
 
 export default routes;
