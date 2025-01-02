@@ -10,7 +10,7 @@ export default {
     path: '/',
     routes: [
       {
-        path: '/share/home',
+        path: '/share',
         name: '主页',
         icon: <HomeOutlined />,
       },
@@ -64,6 +64,20 @@ export default {
       title: '折上折',
       desc: '精品折上折',
       url: '/cms/zsz.html',
+      target: '_blank',
+    },
+    {
+      icon: <span>9.9</span>,
+      title: '9.9包邮',
+      desc: '包邮到家',
+      url: '/cms/9.9.html',
+      target: '_blank',
+    },
+    {
+      icon: <span>9.疯</span>,
+      title: '疯抢榜',
+      desc: '好货疯抢',
+      url: '/cms/fqb.html',
       target: '_blank',
     },
   ],

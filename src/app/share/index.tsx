@@ -1,7 +1,5 @@
 import {
   DoubleRightOutlined,
-  GithubFilled,
-  InfoCircleFilled,
   PlusCircleFilled,
   QuestionCircleFilled,
   SearchOutlined,
@@ -12,8 +10,8 @@ import { history, Outlet, useLocation } from '@umijs/max';
 import { Input, message, theme } from 'antd';
 
 import { domainRecord } from '@/constants';
-import { Empty } from 'antd';
 import defaultProps from './_defaultProps';
+import ShareHome from './home';
 
 const Item: React.FC<{ children: React.ReactNode }> = (props) => {
   const { token } = theme.useToken();
@@ -32,7 +30,7 @@ const Item: React.FC<{ children: React.ReactNode }> = (props) => {
 export default () => {
   const location = useLocation();
 
-  const isEmptyShow = ['/share'].includes(location.pathname);
+  const isHome = location.pathname === '/share';
   return (
     <div
       id="test-pro-layout"
@@ -89,9 +87,7 @@ export default () => {
                 />
               </div>
             ) : undefined,
-            <InfoCircleFilled key="InfoCircleFilled" />,
             <QuestionCircleFilled key="QuestionCircleFilled" />,
-            <GithubFilled key="GithubFilled" />,
           ];
         }}
         menuItemRender={(item, dom) => (
@@ -100,7 +96,7 @@ export default () => {
               if (item.disabled) {
                 return message.warning('功能暂未开放，敬请期待');
               }
-              history.push(item.path || '/home');
+              history.push(item.path || '/share');
             }}
           >
             {dom}
@@ -140,7 +136,7 @@ export default () => {
           </a>
         )}
       >
-        {isEmptyShow ? <Empty /> : <Outlet />}
+        {isHome ? <ShareHome /> : <Outlet />}
       </ProLayout>
     </div>
   );

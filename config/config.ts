@@ -14,7 +14,7 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: '@umijs/max',
+    title: '小桃的美妆社区',
   },
   routes,
   npmClient: 'pnpm',
@@ -49,5 +49,4 @@ export default defineConfig({
     },
   ],
   hash: true,
-  
 });

@@ -20,7 +20,8 @@
   <meta content="telephone=no,email=no" name="format-detection">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css" />
   <script type="text/javascript" src="https://public.ffquan.cn/lib/jquery-1.12.4.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"
+    integrity="sha256-KSlsysqp7TXtFo/FHjb1T9b425x3hrvzjMWaJyKbpcI=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
   <script type="text/javascript" src="https://public.ffquan.cn/lib/vue-lazyload.js"></script>
   <script type="text/javascript" src="https://public.ffquan.cn/lib/swiper/js/swiper.min.js"></script>
@@ -293,71 +294,81 @@
 
     .goodslist .list {
       margin-left: 20px;
-  margin-right: 20px;
-  z-index: 99;
-  margin-top: 22px;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 26px 24px 24px 24px;
+      margin-right: 20px;
+      z-index: 99;
+      margin-top: 22px;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 26px 24px 24px 24px;
     }
+
     .goodslist .list .listTop {
-  display: flex;
-}
-.goodslist .list .listTop .goodsImg {
-  /* min-width: 180px; */
-  width: 180px;
-  height: 180px;
-}
-.goodslist .list .listTop .goodsTitle {
-  margin-left: 18px;
-  color: #333333;
-  font-size: 26px;
-  font-weight: 400;
-  text-align: left;
-  letter-spacing: 0.78px;
-  white-space: pre-line;
-}
-.goodslist .list .place {
-  height: 30px;
-}
-/**右侧文案*/
-.goodslist .list .listBottom {
-  position: relative;
-  margin-top: 30px;
-  display: flex;
-  align-items: center;
-}
-.goodslist .list .listBottom .timeContent {
-  display: flex;
-  align-items: center;
-}
-.goodslist .list .listBottom .timeContent .timeLogo {
-  width: 40px;
-  height: 40px;
-}
-.goodslist .list .listBottom .timeContent p {
-  margin-left: 6px;
-  font-weight: 400;
-  font-size: 24px;
-  color: #999999;
-}
-.goodslist .list .listBottom .copyBtn {
-  position: absolute;
-  top: -14px;
-  bottom: 0;
-  right: 0;
-  width: 466px;
-  height: 64px;
-  border: 1px solid #ff463c;
-  border-radius: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 400;
-  font-size: 26px;
-  color: #ff503e;
-}
-/**分割线============================*/
+      display: flex;
+    }
+
+    .goodslist .list .listTop .goodsImg {
+      /* min-width: 180px; */
+      width: 180px;
+      height: 180px;
+    }
+
+    .goodslist .list .listTop .goodsTitle {
+      margin-left: 18px;
+      color: #333333;
+      font-size: 26px;
+      font-weight: 400;
+      text-align: left;
+      letter-spacing: 0.78px;
+      white-space: pre-line;
+    }
+
+    .goodslist .list .place {
+      height: 30px;
+    }
+
+    /**右侧文案*/
+    .goodslist .list .listBottom {
+      position: relative;
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    .goodslist .list .listBottom .timeContent {
+      display: flex;
+      align-items: center;
+    }
+
+    .goodslist .list .listBottom .timeContent .timeLogo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .goodslist .list .listBottom .timeContent p {
+      margin-left: 6px;
+      font-weight: 400;
+      font-size: 24px;
+      color: #999999;
+    }
+
+    .goodslist .list .listBottom .copyBtn {
+      position: absolute;
+      top: -14px;
+      bottom: 0;
+      right: 0;
+      width: 466px;
+      height: 64px;
+      border: 1px solid #ff463c;
+      border-radius: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 400;
+      font-size: 26px;
+      color: #ff503e;
+    }
+
+    /**分割线============================*/
     .goodslist .list img {
       width: 0.56rem;
       height: 0.56rem;
@@ -421,6 +432,7 @@
       font-size: 0.24rem;
       color: #333333;
     }
+
     .time {
       display: inline-flex;
       align-items: center;
@@ -641,16 +653,16 @@
         :id="'wrapper' + DOMScroll.current">
         <div ref="pullDownEl" :style="{position:'relative',zIndex:50,overflow:'hidden',top:'20vh',height:'0px'}"></div>
         <div class="goodslist" ref="goodslist">
-          <div class="list" v-for="(item, index) in newsList" :key="'goodsList' + index"
-            :id="'goodsList' + item.id">
+          <div class="list" v-for="(item, index) in newsList" :key="'goodsList' + index" :id="'goodsList' + item.id">
             <div class="listTop">
               <img class="goodsImg" :src="showGoodsImg(item)" />
               <p class="goodsTitle">{{ showGoodsTitle(item) }}</p>
             </div>
             <div class="place"></div>
             <div class="listBottom">
-            <div class="timeContent">
-                <img class="timeLogo" src="https://sr.ffquan.cn/dtk_open_api/20240116/cmj201a5eapsecljatcg0.png" alt="" />
+              <div class="timeContent">
+                <img class="timeLogo" src="https://sr.ffquan.cn/dtk_open_api/20240116/cmj201a5eapsecljatcg0.png"
+                  alt="" />
                 <p>{{ messageTime(item.create_time) }}</p>
               </div>
               <div style="flex: 1"></div>
@@ -825,14 +837,14 @@
           type: "get",
           data: {
             ...params,
-            ...(pageId == 1? {}: _this.firstId)
+            ...(pageId == 1 ? {} : _this.firstId)
           },
         }).done(function (res) {
           _this.status = 'loading'
           var data = res.data
           let tempList = data.list || []
           if (tempList.length && pageId == 1) {
-            _this.firstId = {first_id: tempList[0].id}
+            _this.firstId = { first_id: tempList[0].id }
           }
           var list = data.list.reverse()
           var totalNum = data.totalNum
@@ -871,46 +883,46 @@
       jumpGoodsUrl: async function (tempItem) {
         var that = this
         const res = await $.ajax({
-            url: 'http://dtkapi.ffquan.cn/taobaoapi/parse-tb-multiple-new',
-            type: "post",
-            data: {
-              content:tempItem.material_original.map(r=>(r.type === 1 ? r.content : '')).join(''),
-              referer:window.encodeURIComponent(window.location.href),
-              new_refer:window.encodeURIComponent(document.referrer),
-              p: Base64.encode(JSON.stringify({
-                auth_id: this.sys.auth_id,
-                pid: this.sys.pid,
-                uid: this.sys.uid
-              }))
-            },
-          })
-          if(res.code != 1) {
-      vant.Toast({
-        message: '请联系推荐者',
-      });
-      return false;
-    }
-    const escapeRegExp = (text) => {
-        return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-    }
-    let listObj = JSON.stringify(tempItem);
-    // 批量替换 线报原文 
-    // tslint:disable-next-line:prefer-for-of
-    for (let index = 0; index < res.data.length; index++) {
-        const element = res.data[index];
+          url: 'http://dtkapi.ffquan.cn/taobaoapi/parse-tb-multiple-new',
+          type: "post",
+          data: {
+            content: tempItem.material_original.map(r => (r.type === 1 ? r.content : '')).join(''),
+            referer: window.encodeURIComponent(window.location.href),
+            new_refer: window.encodeURIComponent(document.referrer),
+            p: Base64.encode(JSON.stringify({
+              auth_id: this.sys.auth_id,
+              pid: this.sys.pid,
+              uid: this.sys.uid
+            }))
+          },
+        })
+        if (res.code != 1) {
+          vant.Toast({
+            message: '请联系推荐者',
+          });
+          return false;
+        }
+        const escapeRegExp = (text) => {
+          return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+        }
+        let listObj = JSON.stringify(tempItem);
+        // 批量替换 线报原文 
+        // tslint:disable-next-line:prefer-for-of
+        for (let index = 0; index < res.data.length; index++) {
+          const element = res.data[index];
 
-        // if(element.item_id || element.item_url || element.parse_type){
-            let tpwd = element.short_tpwd?element.short_tpwd.replace(/￥|¥/g, '(') : '转链失败';
-            tpwd = tpwd.replace(/\)/g, '');
-            const isUrl = /https:|http:|\/\//g.test(element.match)
-            // 注意：match 存在特殊符号问题，需要通过escapeRegExp转换
-            listObj = listObj.replace(new RegExp(escapeRegExp(element.match),'gi'), isUrl ? element.short_url || '转链失败' :`${tpwd}`);
-        // }
-    }
-    this.newsList = this.newsList.map((r)=>(r.id === tempItem.id ? JSON.parse(listObj) : r));
-    this.newsList = this.newsList.map((res) => ({ ...res, ...{ transfrom: res.id === tempItem.id? true: res.transfrom } }))
-    return JSON.parse(listObj);
-  },
+          // if(element.item_id || element.item_url || element.parse_type){
+          let tpwd = element.short_tpwd ? element.short_tpwd.replace(/￥|¥/g, '(') : '转链失败';
+          tpwd = tpwd.replace(/\)/g, '');
+          const isUrl = /https:|http:|\/\//g.test(element.match)
+          // 注意：match 存在特殊符号问题，需要通过escapeRegExp转换
+          listObj = listObj.replace(new RegExp(escapeRegExp(element.match), 'gi'), isUrl ? element.short_url || '转链失败' : `${tpwd}`);
+          // }
+        }
+        this.newsList = this.newsList.map((r) => (r.id === tempItem.id ? JSON.parse(listObj) : r));
+        this.newsList = this.newsList.map((res) => ({ ...res, ...{ transfrom: res.id === tempItem.id ? true : res.transfrom } }))
+        return JSON.parse(listObj);
+      },
       handleClipboard: function (event, res, isGoods, text) {
         var that = this
         if (event.getAttribute("isCopy")) {
@@ -925,53 +937,53 @@
         // }
 
         let domDev = document.createElement('div');
-      domDev.style = "position: fixed;left: -999999999px;top:  -999999999px;";
+        domDev.style = "position: fixed;left: -999999999px;top:  -999999999px;";
 
-      const clipboardImg = new Clipboard(event, {
-          target: async (trigger)=> {
-              return new Promise(async (resolve,reg)=>{
-                if (text) {
-                  let retText = ''
-                  retText = retText + `<div>${text}</div>`
-                  domDev.innerHTML = retText ;
+        const clipboardImg = new Clipboard(event, {
+          target: async (trigger) => {
+            return new Promise(async (resolve, reg) => {
+              if (text) {
+                let retText = ''
+                retText = retText + `<div>${text}</div>`
+                domDev.innerHTML = retText;
                 document.body.append(domDev);
                 setTimeout(() => {
                   resolve(domDev);
                 });
-                } else {
-                  let tempItem = trigger.getAttribute('item');
+              } else {
+                let tempItem = trigger.getAttribute('item');
                 tempItem = tempItem ? JSON.parse(tempItem) : {};
                 const res = await this.jumpGoodsUrl(tempItem);
                 if (!res) {
                   // 转链失败
                   vant.Toast({
-        message: '转链失败, 请联系推荐者',
-      });
+                    message: '转链失败, 请联系推荐者',
+                  });
                   return
                 }
                 let ret = '';
                 let materialOriginalRegexp = res.material_original || [];;
                 for (const i in materialOriginalRegexp) {
-                    if (materialOriginalRegexp.hasOwnProperty(i)) {
-                        const element = materialOriginalRegexp[i];
-                        //  {/* 0文本 1图片 2视频 */}
-                        if (parseFloat(element.type) === 1) {
-                            ret = ret + `<div>${`${element.content}`.replace(/\r\n|\\r\\n|\\n|\n|\r|\\r/g, "<br />")}</div>`
-                        } 
-                        // else if (parseFloat(element.type) === 2) {
-                        //     ret = ret + `<div><img src="${`${element.content}`.replace(/https:/g, 'http:')}" /></div>`
-                        // }
+                  if (materialOriginalRegexp.hasOwnProperty(i)) {
+                    const element = materialOriginalRegexp[i];
+                    //  {/* 0文本 1图片 2视频 */}
+                    if (parseFloat(element.type) === 1) {
+                      ret = ret + `<div>${`${element.content}`.replace(/\r\n|\\r\\n|\\n|\n|\r|\\r/g, "<br />")}</div>`
                     }
+                    // else if (parseFloat(element.type) === 2) {
+                    //     ret = ret + `<div><img src="${`${element.content}`.replace(/https:/g, 'http:')}" /></div>`
+                    // }
+                  }
                 }
-                domDev.innerHTML = ret ;
+                domDev.innerHTML = ret;
                 document.body.append(domDev);
                 setTimeout(() => {
                   resolve(domDev);
                 });
-                }
-              })
+              }
+            })
           }
-      })
+        })
         clipboardImg.on('success', function (e) {
           setTimeout(() => {
             vant.Toast(text ? '复制成功，快分享给小伙伴吧~' : '口令复制成功，打开手淘抢购');
@@ -983,7 +995,7 @@
           vant.Toast('口令复制失败，请联系推荐者');
         });
       },
-      copyTkl: function (res,isGoods,text) {
+      copyTkl: function (res, isGoods, text) {
         var that = this;
 
         var clipboardImg = new window.ClipboardJS("#copy", {
@@ -1050,7 +1062,7 @@
             ...{
               site_id: sys.uid,
               pid: sys.pid,
-              auth_id:this.sys.auth_id,
+              auth_id: this.sys.auth_id,
               need_tpwd: 1,
               gid: res.itemId,
               goodsid: res.itemId,
@@ -1141,36 +1153,36 @@
       // 展示图片
       showGoodsImg(item) {
         var goodsImg = ''
-    if (item.material_show && item.material_show.length) {
-      item.material_show.forEach(element => {
-        if (element.type == 2 && !goodsImg) {
-          goodsImg = element.content
+        if (item.material_show && item.material_show.length) {
+          item.material_show.forEach(element => {
+            if (element.type == 2 && !goodsImg) {
+              goodsImg = element.content
+            }
+          });
         }
-      });
-    }
-    return goodsImg || 'https://sr.ffquan.cn/dtk_www/20210414/c1r8db76vrke67sn1tb00.png'
+        return goodsImg || 'https://sr.ffquan.cn/dtk_www/20210414/c1r8db76vrke67sn1tb00.png'
       },
       // 展示标题
       showGoodsTitle(item) {
         var goodsTitle = ''
-    if (item.transfrom) {
-      if (item.material_original && item.material_original.length) {
-        item.material_original.forEach(element => {
-          if (element.type == 1) {
-            goodsTitle = goodsTitle? goodsTitle + '\n' + element.content:  goodsTitle + element.content 
+        if (item.transfrom) {
+          if (item.material_original && item.material_original.length) {
+            item.material_original.forEach(element => {
+              if (element.type == 1) {
+                goodsTitle = goodsTitle ? goodsTitle + '\n' + element.content : goodsTitle + element.content
+              }
+            });
           }
-        });
-      }
-    } else {
-      if (item.material_show && item.material_show.length) {
-        item.material_show.forEach(element => {
-          if (element.type == 1) {
-            goodsTitle = goodsTitle? goodsTitle + '\n' + element.content:  goodsTitle + element.content 
+        } else {
+          if (item.material_show && item.material_show.length) {
+            item.material_show.forEach(element => {
+              if (element.type == 1) {
+                goodsTitle = goodsTitle ? goodsTitle + '\n' + element.content : goodsTitle + element.content
+              }
+            });
           }
-        });
-      }
-    }
-    return goodsTitle.replace('[淘宝请转链]', '[复制生成淘口令]')
+        }
+        return goodsTitle.replace('[淘宝请转链]', '[复制生成淘口令]')
       },
       /**
              *格式化日期与当前时间间隔类型
@@ -1179,24 +1191,24 @@
              * 1-24小时：XX小时前
              * 24小时+：显示具体日期时分秒
              */
-             messageTime: function (timeStr) {
-                if (!timeStr) {
-                    return ""
-                }
-                let time = new Date(timeStr).getTime()
-                let currentTime = Date.now()
-                let diff = currentTime - time
-                if (diff < 60 * 1000) {
-                    return "刚刚"
-                } else if (diff >= 60 * 1000 && diff < 60 * 60 * 1000) {
-                    return Math.floor(diff / (60 * 1000)) + '分钟前'
-                }else if (diff >= 3600 * 1000 && diff < 24 * 3600 * 1000) {
-                    return Math.floor(diff / (3600 * 1000)) + '小时前'
-                }
-                 else {
-                    return timeStr
-                }
-            },
+      messageTime: function (timeStr) {
+        if (!timeStr) {
+          return ""
+        }
+        let time = new Date(timeStr).getTime()
+        let currentTime = Date.now()
+        let diff = currentTime - time
+        if (diff < 60 * 1000) {
+          return "刚刚"
+        } else if (diff >= 60 * 1000 && diff < 60 * 60 * 1000) {
+          return Math.floor(diff / (60 * 1000)) + '分钟前'
+        } else if (diff >= 3600 * 1000 && diff < 24 * 3600 * 1000) {
+          return Math.floor(diff / (3600 * 1000)) + '小时前'
+        }
+        else {
+          return timeStr
+        }
+      },
     },
 
 
@@ -1249,8 +1261,8 @@
             for (let index = 0; index < newVal.length; index++) {
               that.$nextTick(function () {
                 let tempItem = document.getElementById(`goodsList${newVal[index].id}${that.active}${that.activeTwo}`)
-                  tempItem.setAttribute('item',JSON.stringify(newVal[index]));
-                  that.handleClipboard(tempItem, newVal[index], true)
+                tempItem.setAttribute('item', JSON.stringify(newVal[index]));
+                that.handleClipboard(tempItem, newVal[index], true)
               })
             }
           }
